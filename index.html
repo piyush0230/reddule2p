@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riddle Puzzle</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+    .puzzle-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      margin: auto;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff9800;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e68900;
+    }
+    .message {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .correct {
+      color: #ffeb3b;
+    }
+    .wrong {
+      color: #ff5252;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤔 Riddle Puzzle</h1>
+  <p>Solve the puzzle to reveal your next clue!</p>
+  <div class="puzzle-box">
+    <p>I can travel the world while staying in a corner. What am I?</p>
+    <input type="text" id="riddleAnswer" placeholder="Enter your answer...">
+    <br>
+    <button onclick="checkRiddle()">Submit</button>
+    <div id="riddleMsg" class="message"></div>
+  </div>
+
+  <script>
+    function checkRiddle() {
+      let ans = document.getElementById("riddleAnswer").value.trim().toLowerCase();
+      let msg = document.getElementById("riddleMsg");
+      
+      // Accepted variations of the correct answer
+      const acceptedAnswers = [
+        "a postage stamp",
+        "postage stamp",
+        "stamp"
+      ];
+
+      if (acceptedAnswers.includes(ans)) {
+        msg.innerHTML = "🎉 Correct! Clue: <i>“ Where people talk and others listen, ideas here always glisten?”</i>";
+        msg.className = "message correct";
+      } else {
+        msg.innerHTML = "❌ Wrong answer. Try again!";
+        msg.className = "message wrong";
+      }
+    }
+  </script>
+</body>
+</html>
